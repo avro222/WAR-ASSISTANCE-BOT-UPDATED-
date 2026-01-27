@@ -1,0 +1,52 @@
+================================================================================
+               ROVER WIRING SCHEMATIC (ARDUINO + L293D SHIELD)
+================================================================================
+
+[ POWER SOURCE ]
+----------------
+Battery (7.4V - 11.1V Li-ion) (+) ---> L293D Shield EXT_PWR (+)
+Battery (7.4V - 11.1V Li-ion) (-) ---> L293D Shield EXT_PWR (-) / GND
+* Note: Keep the PWR jumper ON if powering Arduino via Shield.
+
+[ MOTORS (L293D Shield Terminals) ]
+-----------------------------------
+Motor Front-Right (FR) ---------> Terminal M1
+Motor Front-Left (FL) ---------> Terminal M2
+Motor Back-Left (BL) ---------> Terminal M3
+Motor Back-Right (BR) ---------> Terminal M4
+
+[ SERVOS (Weapon Systems) ]
+---------------------------
+Spike Servo (Rear) -------------> SER1 Port (Signal Pin 10)
+Cannon Servo (Front) -----------> SER2 Port (Signal Pin 9)
+* Servo Wiring: Brown (GND), Red (5V), Orange (Signal)
+
+[ BLUETOOTH MODULE (HC-05/06) ]
+-------------------------------
+HC-05 VCC ----------------------> Arduino 5V
+HC-05 GND ----------------------> Arduino GND
+HC-05 TXD ----------------------> Arduino RX (Pin 0)
+HC-05 RXD ----------------------> Arduino TX (Pin 1)
+* Note: Disconnect RX/TX while uploading code.
+
+[ ESP32-CAM (Video Feed & AI) ]
+-------------------------------
+ESP32-CAM 5V -------------------> External 5V / Battery VCC
+ESP32-CAM GND ------------------> Common GND
+ESP32-CAM TX (GPIO 1) ----------> Arduino Analog Pin A2 (SoftwareSerial RX)
+* Note: Use 115200 Baud for IP check and 9600 for data communication.
+
+
+[ 3-6v TO 400 kv CONVERTER MODULE AND RELAY CONNECTION]
+-------------------------------------
+RELAY VCC  ---------------------->  L293D MOTOR SHEILD 5V
+RELAY GND  ----------------------> L293D MOTOR SHEILD GND
+RELAY IN(SIGNAL)  ----------------------> L293D MOTOR SHEILD A0 PIN (A0-5)
+
+BATTERY NEGATIVE  ----------------------> 3-6V TO 400 kv CONVERTER MODULE
+BATTERY POSITIVE  ----------------------> RELAY COM PORT
+400 kv MODULE  ----------------------> RELAY NO
+
+================================================================================
+      SYSTEM CONFIG: WHEEL DRIVE | SPIKE: SER1 | CANNON: SER2 | BAUD: 9600
+================================================================================
